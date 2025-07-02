@@ -23,7 +23,7 @@
 #include "hydrabus.h"
 
 /* ULED PA4 Configured as Output for Test */
-#define ULED_OFF (palClearPad(GPIOA, 4))
+#define ULED_OFF (palClearPad(GPIOD, 12))
 
 /*
  * SDIO configuration.

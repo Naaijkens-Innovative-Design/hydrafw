@@ -37,9 +37,9 @@
 
 /* ULED PA4 Configured as Output for Test */
 #undef ULED_ON
-#define ULED_ON  (palSetPad(GPIOA, 4))
+#define ULED_ON  (palSetPad(GPIOD, 12))
 #undef ULED_OFF
-#define ULED_OFF (palClearPad(GPIOA, 4))
+#define ULED_OFF (palClearPad(GPIOD, 12))
 
 /* PB3 Test */
 #undef TST_ON
