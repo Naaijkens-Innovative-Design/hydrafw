@@ -152,7 +152,8 @@ void initSPI1(void)
 	/*
 	* Initializes the SPI driver 1.
 	*/
-	spiSlaveStart(&SPID1, &spi1cfg);
+	//spiSlaveStart(&SPID1, &spi1cfg);
+	spiStart(&SPID1, &spi1cfg); //TODO
 	/* SPI DMA Start using double buffer */
 	dmaStreamSetMemory0(SPID1.dmarx, spi_rx_dma_buf[0]);
 	dmaStreamSetMemory1(SPID1.dmarx, spi_rx_dma_buf[1]);

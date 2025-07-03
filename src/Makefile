@@ -197,6 +197,7 @@ CSRC = $(STARTUPSRC) \
        $(COMMONSRC) \
        $(HYDRABUSSRC) \
        $(STM32CUBESRC) \
+       $(LIBSRC) \
        tokenline/tokenline.c \
        main.c
 
@@ -361,8 +362,11 @@ build-scripts/hex2dfu:
 	$(OUT_LOG) echo $(HEX2DFU_BIN) -l ST... -r $(FW_REVISION) -i $< -o $@
 	$(OUT_CMD) $(HEX2DFU_BIN) -l ST... -r $(FW_REVISION) -i $< -o $@
 
+chibios/ext/fatfs:
+	7z x -ochibios/ext/ chibios/ext/fatfs-0.13_patched.7z
+
 # This rule hook is defined in the ChibiOS build system
-PRE_MAKE_ALL_RULE_HOOK: ./common/hydrafw_version.hdr
+PRE_MAKE_ALL_RULE_HOOK: ./common/hydrafw_version.hdr chibios/ext/fatfs
 
 # This rule hook is defined in the ChibiOS build system
 POST_MAKE_ALL_RULE_HOOK: $(BUILDDIR)/$(PROJECT).dfu

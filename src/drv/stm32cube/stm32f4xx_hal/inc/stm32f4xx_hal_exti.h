@@ -219,7 +219,7 @@ typedef struct
 /**
   * @brief  EXTI Mask for interrupt & event mode
   */
-#define EXTI_MODE_MASK                      (EXTI_MODE_EVENT | EXTI_MODE_INTERRUPT)
+//#define EXTI_MODE_MASK                      (EXTI_MODE_EVENT | EXTI_MODE_INTERRUPT)
 
 /**
   * @brief  EXTI Mask for trigger possibilities
