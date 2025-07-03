@@ -29,7 +29,7 @@
 #define CHCONF_H
 
 #define _CHIBIOS_RT_CONF_
-#define _CHIBIOS_RT_CONF_VER_5_1_
+#define _CHIBIOS_RT_CONF_VER_6_0_
 
 /*===========================================================================*/
 /**
@@ -371,6 +371,17 @@
 #endif
 
 /**
+ * @brief   Pipes APIs.
+ * @details If enabled then the pipes APIs are included
+ *          in the kernel.
+ *
+ * @note    The default is @p TRUE.
+ */
+#if !defined(CH_CFG_USE_PIPES)
+#define CH_CFG_USE_PIPES                    TRUE
+#endif
+
+/**
  * @brief   Dynamic Threads APIs.
  * @details If enabled then the dynamic threads creation APIs are included
  *          in the kernel.
@@ -445,6 +456,13 @@
  */
 #if !defined(CH_CFG_FACTORY_OBJ_FIFOS)
 #define CH_CFG_FACTORY_OBJ_FIFOS            TRUE
+#endif
+
+/**
+ * @brief   Enables factory for Pipes.
+ */
+#if !defined(CH_CFG_FACTORY_PIPES) || defined(__DOXYGEN__)
+#define CH_CFG_FACTORY_PIPES                TRUE
 #endif
 
 /** @} */

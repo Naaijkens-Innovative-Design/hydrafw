@@ -131,7 +131,11 @@ PROJECT = hydrafw
 
 # Imported source files and paths
 CHIBIOS = chibios
+BUILDDIR := ./build
+DEPDIR   := ./.dep
 
+# Licensing files.
+include $(CHIBIOS)/os/license/license.mk
 # Startup files.
 ifeq ($(STM32F4XX),1)
 include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk/startup_stm32f4xx.mk
@@ -153,6 +157,8 @@ ifeq ($(STM32F4XX),1)
 include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v7m.mk
 endif
 
+# Auto-build files in ./source recursively.
+include $(CHIBIOS)/tools/mk/autobuild.mk
 # Other files (optional).
 include $(CHIBIOS)/os/hal/lib/streams/streams.mk
 include $(CHIBIOS)/os/various/fatfs_bindings/fatfs.mk
@@ -173,6 +179,8 @@ endif
 ifeq ($(STM32F4XX),1)
 LDSCRIPT= $(STARTUPLD)/STM32F405xG.ld
 endif
+
+CONFDIR := $(COMMONINC)/cfg
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -229,7 +237,9 @@ TCPPSRC =
 ASMSRC = $(STM32CUBESRC_ASM)
 ASMXSRC = $(STARTUPASM) $(PORTASM) $(OSALASM)
 
-INCDIR = $(CHIBIOS)/os/license \
+INCDIR = $(CONFDIR) \
+	 $(ALLINC) \
+         $(CHIBIOS)/os/license \
          $(STARTUPINC) $(KERNINC) $(PORTINC) $(OSALINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) \
          $(STREAMSINC) $(LWINC) $(FATFSINC) \
@@ -330,7 +340,8 @@ endif
 # End of user defines
 ##############################################################################
 
-RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC
+RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk
+include $(RULESPATH)/arm-none-eabi.mk
 include $(RULESPATH)/rules.mk
 
 # Anything that depends on FORCE will be considered out-of-date
