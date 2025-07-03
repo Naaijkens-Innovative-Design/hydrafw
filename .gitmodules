@@ -3,7 +3,8 @@
 	url = https://github.com/hydrabus/tokenline.git
 [submodule "chibios"]
 	path = src/chibios
-	url = https://github.com/hydrabus/ChibiOS.git
+	url = https://github.com/ChibiOS/ChibiOS.git
+	branch = stable_19.1.x
 [submodule "contrib/pyHydrabus"]
 	path = contrib/pyHydrabus
 	url = https://github.com/hydrabus/pyHydrabus
