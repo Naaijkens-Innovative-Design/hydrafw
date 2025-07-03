@@ -10,3 +10,6 @@
 [submodule "stm32g4xx_hal"]
 	path = src/drv/stm32cube/stm32f4xx_hal
 	url = https://github.com/STMicroelectronics/stm32g4xx-hal-driver.git
+[submodule "src/drv/stm32cube/stm32g4xx_hal"]
+	path = src/drv/stm32cube/stm32g4xx_hal
+	url = https://github.com/STMicroelectronics/stm32g4xx-hal-driver
